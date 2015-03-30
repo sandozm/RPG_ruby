@@ -1,0 +1,30 @@
+<h1>Home</h1>
+<p>Personnage selectionné :</p>
+<% if session[:character] && @character %>
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-0 col-lg-offset-0 col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading resume-heading">
+        <div class="row">
+          <div class="col-lg-12">
+
+            <div class="col-xs-12 col-sm-12">
+              <ul class="list-group">
+                <li class="list-group-item">Nom : <%= @character.name %></li>
+                <li class="list-group-item">Niveau : <%= @character.level %></li>
+                <li class="list-group-item">Points de vie : <%= @character.pv * 10 %></li>
+                <li class="list-group-item">Endurance : <%= @character.pv + 1 %></li>
+                <li class="list-group-item">Attaque : <%= @character.atk + 1 %></li>
+                <li class="list-group-item">Defense : <%= @character.def + 1 %></li>
+                <li class="list-group-item">Experience : <%= @character.exp %>/200</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% else %>
+	<p>Aucun personnage selectionné</p>
+<% end %>

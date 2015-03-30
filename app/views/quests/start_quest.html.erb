@@ -1,0 +1,25 @@
+ <div class="bs-docs-section">
+    <div class="row">
+
+        <div class="dual-list list-left col-md-12">
+            <div class="well text-right">
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="input-group">
+                            <p><%= @quests.questions.first.questions %></p>
+                        </div>
+                    </div>
+                </div>
+                <ul class="list-group">
+                    <% @quests.questions.first.reply.each do |reponse| %>
+                    <li class="list-group-item">
+                    <%= form_tag( { :controller => 'replies', :action => 'check_reply', :id => reponse.id }) do %>
+                <%= submit_tag(reponse.reply) %>
+                <% end %>
+                    </li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+        </div>
+

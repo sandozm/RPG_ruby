@@ -1,0 +1,17 @@
+<h1>Nouveau personnage</h1>
+<% if alert %>
+<div class="alert alert-dismissable alert-danger">
+	<button class="close" data-dismiss="alert" type="button">×</button>
+	<strong><%= alert %></strong>
+</div>
+<% end %>
+
+<% if notice %>
+<div class="alert alert-dismissable alert-success">
+	<button class="close" data-dismiss="alert" type="button">×</button>
+	<strong><%= notice %></strong>
+</div>
+<% end %>
+<%= render 'form' %>
+
+<%= link_to 'Back', characters_path %>

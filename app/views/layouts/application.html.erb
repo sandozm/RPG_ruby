@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RubyOnRailsMedievalRpg</title>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= stylesheet_link_tag "bootstrap.min" %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+</head>
+<body>
+
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand">My_RPG</a>
+
+        </div>
+        <% if session[:id] %>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="/my_characters">Personnage</a>
+            </li>
+            <% if session[:character] %>
+            <li>
+              <li><%= link_to "Inventaire", controller: 'inventories', action: 'my_inventory' %></li>
+            </li>
+            
+            <li>
+              <%= link_to "Quête(s)", controller: 'npcs', action: 'npc_list' %>
+            </li>
+            <% end %>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <% if session[:role] === 1 %>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="" id="Admin">Admin <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="Admin">
+                <li><%= link_to "Quêtes", quests_path %></li>
+                <li><%= link_to "Récompenses", rewards_path %></li>
+                <li><%= link_to "PNJs", npcs_path %></li>
+                <li><%= link_to "Objets", items_path %></li>
+                <li><%= link_to "Questions", questions_path %></li>
+                <li><%= link_to "Reponses", replies_path %></li>
+                <li><%= link_to "Utilisateurs", users_path %></li>
+              </ul>
+            </li>
+            <% end %>
+            
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="" id="profil">Profil <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="profil">
+                <li><%= link_to "Profil", controller: 'users', action: 'edit', id: session[:id] %></li>
+                <li class="divider"></li>
+
+                <li><%= link_to 'Déconnexion', controller: 'home', action: 'logout' %></li>
+              </ul>
+            </li>
+            <% else %>
+            <div class="navbar-collapse collapse" id="navbar-main">
+              <ul class="nav navbar-nav">
+                <li>
+                  <%= link_to "Connexion", controller: 'home', action: 'login' %>
+                </li>
+                <li>
+                  <%= link_to "S'enregistrer", controller: 'users', action: 'new' %>
+                </li>
+              </ul>
+            </div>
+            <% end %>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+     <div class="container">
+
+      <div class="page-header" id="banner">
+        <div class="row">
+          <div class="col-lg-12 col-md-7 col-sm-6">
+           <%= yield %>
+         </div>
+       </div>
+     </div>
+     
+   </div>
+
+   <footer>
+    <div class="row">
+      <div class="col-lg-12">
+
+        <p>Made by sandoz_m</p>
+        <p>My_RPG - Ruby On Rails</p>
+
+      </div>
+    </div>
+
+  </footer>
+
+
+</div>
+<%= javascript_include_tag "jquery" %>
+<%= javascript_include_tag "bootstrap.min" %>
+<%= javascript_include_tag "plugins/morris/raphael.min" %>
+<%= javascript_include_tag "plugins/morris/morris.min" %>
+<%= javascript_include_tag "plugins/morris/morris-data" %>
+</body>
+</html>

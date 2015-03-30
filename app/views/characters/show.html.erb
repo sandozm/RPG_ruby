@@ -1,0 +1,41 @@
+<% if alert %>
+<div class="alert alert-dismissable alert-danger">
+  <button class="close" data-dismiss="alert" type="button">×</button>
+  <strong><%= alert %></strong>
+</div>
+<% end %>
+
+<% if notice %>
+<div class="alert alert-dismissable alert-success">
+  <button class="close" data-dismiss="alert" type="button">×</button>
+  <strong><%= notice %></strong>
+</div>
+<% end %>
+
+<p>
+  <strong>Users:</strong>
+  <%= @character.users %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @character.name %>
+</p>
+
+<p>
+  <strong>Pv:</strong>
+  <%= @character.pv %>
+</p>
+
+<p>
+  <strong>Atk:</strong>
+  <%= @character.atk %>
+</p>
+
+<p>
+  <strong>Def:</strong>
+  <%= @character.def %>
+</p>
+
+<%= link_to 'Edit', edit_character_path(@character) %> |
+<%= link_to 'Back', characters_path %>
